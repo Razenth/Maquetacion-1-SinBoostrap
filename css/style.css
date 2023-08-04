@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@font-face {
+    font-family:'cascadia';
+    src: url(/images/Cascadia.ttf);
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: cascadia;
 }
 
 ::-webkit-scrollbar {
@@ -13,6 +16,7 @@
 
 :root{
     --BlueBody:#1e1d2b;
+    --BlueNav: #2c2b47;
     --OrangeGeneral:#ff702a;
     --RositaFresita: #ffefe8;
 }
@@ -27,22 +31,31 @@ body{
 
 .navbar{
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .container-fluid{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+}
+
+.navbar-brand{
+    grid-row: 1;
 }
 
 .navbar-nav{
+    grid-row: 2;
     gap: 20px;
     list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    background-color: var(--BlueNav);
+}
+
+.nav-item{
+    padding: 5px 0;
 }
 
 .nav-link{
@@ -75,11 +88,11 @@ body{
 /* PAGE START */
 
 .page-home{
-    height: 96vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
+    height: auto;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
 }
 
 .home-title{
@@ -90,10 +103,12 @@ body{
 .home-info{
     margin-bottom: 30px;
     text-align: center;
+    grid-row: 1;
 }
 
 .home-img{
-    width: 390px;
+    width: 90%;
+    height: auto;
 }
 
 .botones-dentro{
@@ -113,16 +128,19 @@ body{
 /*  ABOUT US PAGE */
 
 .about-us{
-    height: 90vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin:20px 0;
+    gap: 20px;
 }
 
 .about-title{
     color: var(--OrangeGeneral);
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .about-sub-title{
@@ -145,45 +163,54 @@ body{
 }
 
 .about-img{
-    width: 290px;
+    width: 90%;
+    height: auto;
     align-self: center;
 }
 
-.food-title{
-    color: var(--OrangeGeneral);
-}
+/* FOOD PAGE */
 
 .food-menu{
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-bottom: 2rem;
 }
 
-.food-menu h3{
-    font-size: 17px;
+.food-title{
+    color: var(--OrangeGeneral);
+    font-size: 14px;
 }
 
 .food-info{
     font-size: 35px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .fila-tarjetas{
     width: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
 
 .tarjeta{
-    width: 350px;
+    width: 90%;
     background-color: var(--RositaFresita);
     color: black;
     font-weight:500;
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
+    text-align: center;
+}
+
+.tarjeta img{
+    width: 90%;
+    height: auto;
 }
 
 .info-tarjeta{
@@ -207,19 +234,34 @@ body{
 
 .services-menu{
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .services-title{
     color: var(--OrangeGeneral);
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .services-info{
     font-size: 40px;
+    text-align: center;
+}
+
+.fila-tarjetas-info{
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.tarjeta-services{
+    text-align: center;
+    margin: 10px 0;
 }
 
 .image-service{
-    width: 250px;
+    width: 75%;
+    height: auto;
 }
 
 .info-tarjeta-services{
@@ -233,10 +275,7 @@ body{
     margin-bottom: 10px;
 }
 
-.fila-tarjetas-info{
-    justify-content: center;
-    margin-top: 25px;
-}
+
 
 .subtitle-tarjeta-services{
     width: 220px;
@@ -350,6 +389,126 @@ body{
 }
 
 
+@media (min-width:1024px) {
+    .container-fluid{
+        grid-template-rows: 1fr;
+        grid-template-columns: 100px 1fr;
+    }
+
+    .navbar-brand{
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .navbar-nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-right: 10px;
+        grid-row: 1;
+        grid-column: 2;
+        background-color: var(--BlueBody);
+    }
+
+    .page-home{
+        display: flex;
+        justify-content: center;
+    }
+
+    .home-title{
+        font-size: 60px;
+        width: 100%;
+    }
+
+    .home-info{
+        align-self: center;
+        width: 600px;
+    }
+
+    .home-img{
+        width: 40%;
+    }
+
+    /* ABOUT US */
+
+    .about-us{
+        flex-direction:row;
+        height: 85vh;
+        gap: 5%;
+    }
+
+    .about-us-info{
+        order: 2;
+        align-items: flex-start;
+    }
+
+    .about-img{
+        order: 1;
+        width: 40%;
+    }
+
+    .about-title,.about-sub-title,.about-info{
+        text-align: left;
+    }
+
+    /* FOOD MENU */
+
+    .fila-tarjetas{
+        flex-direction: row;
+    }
+    .fila-tarjetas-info{
+        display: flex;
+    }
+
+    /* Footer */
+
+    .mid-footer{
+        margin: 10% 0;
+        height: 250px;
+    }
+
+    .mid-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align:center;
+    }
+    .mid-info h4{
+        width: 70%;
+        font-size: 45px;
+    }
+
+    .mid-info button{
+        width: 25%;
+    }
+
+    .footer{
+        grid-template-rows: 1fr;
+        margin-bottom: 10px;
+    }
+
+    .part1,.part2,.part3,.part4{
+        grid-row: 1;
+    }
+    
+
+}
+
+@media (min-width:1500px) {
+
+    .home-img{
+        width: 30%;
+    }
+
+    .about-img{
+        width: 30%;
+    }
+
+    .image-service{
+        width: 50%;
+    }
+}
+
 /* @media (max-width:1540px){
 
     .home-info{
@@ -408,22 +567,7 @@ body{
 }
 
 
-@media (max-width:1000px) {
-    .page-home{
-        height: 75vh;
-    }
 
-    .about-us{
-        height: 85vh;
-    }
-
-    .about-img{
-        height: 400px;
-        align-self: center;
-    }
-
-
-}
 
 @media (max-width:766px) {
     .home-info{
